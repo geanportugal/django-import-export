@@ -10,6 +10,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 import json
 import ast
+import math
 
 
 class Widget(object):
@@ -84,11 +85,15 @@ class DecimalWidget(NumberWidget):
     """
     Widget for converting decimal fields.
     """
+    
+    def truncate(self, number):
+        stepper = 10.0 ** 2
+        return math.trunc(stepper * number) / stepper
 
     def clean(self, value, row=None, *args, **kwargs):
         if self.is_empty(value):
             return None
-        return round(Decimal(value), 2)
+        return truncate(Decimal(value))
 
 
 class CharWidget(Widget):
