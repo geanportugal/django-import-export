@@ -93,7 +93,7 @@ class DecimalWidget(NumberWidget):
     def clean(self, value, row=None, *args, **kwargs):
         if self.is_empty(value):
             return None
-        return truncate(Decimal(value))
+        return self.truncate(Decimal(value))
 
 
 class CharWidget(Widget):
