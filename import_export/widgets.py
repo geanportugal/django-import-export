@@ -88,7 +88,7 @@ class DecimalWidget(NumberWidget):
     def clean(self, value, row=None, *args, **kwargs):
         if self.is_empty(value):
             return None
-        return Decimal(value)
+        return Decimal(round(value, 2))
 
 
 class CharWidget(Widget):
