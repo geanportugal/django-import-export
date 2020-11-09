@@ -87,8 +87,9 @@ class DecimalWidget(NumberWidget):
     """
     
     def truncate(self, number):
+        num = float(number)
         stepper = 10.0 ** 2
-        return math.trunc(stepper * number) / stepper
+        return math.trunc(stepper * num) / stepper
 
     def clean(self, value, row=None, *args, **kwargs):
         if self.is_empty(value):
